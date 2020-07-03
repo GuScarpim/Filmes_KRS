@@ -1,19 +1,48 @@
 import React from 'react';
 import * as S from './styles';
 
-export default function Catalago() {
+import Aladin from '../../assets/aladin.jpg';
+import Detona from '../../assets/detona.jpg';
+import Esquadrao from '../../assets/esquadrao.jpg';
+import Sonic from '../../assets/sonic.jpg';
+import StarWars from '../../assets/starwars.jpg';
+import Vingadores from '../../assets/vingadores.jpg';
+
+export default function Catalago({
+  titulo, sinopse, genero, data, idioma, legendado, diretor,
+  link, avaliacao, img
+}) {
   return (
-    <S.Card>
-      <h5>Título do Filme</h5>
-      <h1>Img</h1>
-      <p>Sinopse</p>
-      <p>Gênero</p>
-      <p>Data de lançamento</p>
-      <p>Idioma</p>
-      <p>Legendado</p>
-      <p>Diretor</p>
-      <a>Link</a>
-      <p>Avaliação</p>
-    </S.Card>
+    <S.ContainerCard>
+      <S.Card>
+        <h3>{titulo}</h3>
+        {
+          img === 0 ?
+            <img src={Aladin} /> :
+          img === 1 ?
+          <img src={Detona} /> :
+          img === 2 ?
+          <img src={Esquadrao} /> :
+          img === 3 ?
+          <img src={Sonic} /> :
+          img === 4 ?
+          <img src={StarWars} /> :
+          img === 5 ?
+          <img src={Vingadores} />
+          : ''
+        }
+        <p>{sinopse}</p>
+        <p>{genero}</p>
+        <p>{data}</p>
+        <p>{idioma}</p>
+        {legendado ?
+          <p>Legendado</p> :
+          <p>Sem legenda</p>
+        }
+        <p>{diretor}</p>
+        <a href={link}>{link}</a>
+        <p>{avaliacao}</p>
+      </S.Card >
+    </S.ContainerCard>
   )
 }
