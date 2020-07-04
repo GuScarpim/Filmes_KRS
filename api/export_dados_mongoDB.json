@@ -1,0 +1,74 @@
+[{
+  "_id": {
+    "$oid": "5f00009a2e95564888882c6b"
+  },
+  "img": 4,
+  "sinopse": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a",
+  "genero": "Ação",
+  "data": "05/04/2020",
+  "legendado": true,
+  "titulo": "Star Wars",
+  "idioma": "Inglês",
+  "diretor": "Gustavo Scarpim",
+  "link": "http://localhost:3000/filmes",
+  "avaliacao": 2,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f00051b6e83bb1e4cb83d12"
+  },
+  "img": 0,
+  "sinopse": "om Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a",
+  "genero": "Aventura",
+  "data": "2020-07-07",
+  "legendado": false,
+  "titulo": "Aladin",
+  "idioma": "PT-BR",
+  "diretor": "Gustavo Scarpim",
+  "link": "http://localhost:3000/filmes",
+  "avaliacao": 4,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f00055c6e83bb1e4cb83d13"
+  },
+  "img": 1,
+  "sinopse": "m Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type a",
+  "genero": "Aventura",
+  "legendado": true,
+  "titulo": "Detona Ralph",
+  "idioma": "EN",
+  "diretor": "Gustavo Scarpim",
+  "link": "http://localhost:3000/filmes",
+  "avaliacao": 5,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f0006eb218ffe25b4be3d41"
+  },
+  "genero": "Comédia",
+  "data": "20/04/2020",
+  "legendado": true,
+  "titulo": "Sonic",
+  "idioma": "En",
+  "diretor": "Gustavo Scarpim",
+  "avaliacao": 1,
+  "img": 3,
+  "__v": 0,
+  "sinopse": "m Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five cen"
+},{
+  "_id": {
+    "$oid": "5f0007d3218ffe25b4be3d43"
+  },
+  "titulo": "Esquadrão",
+  "img": 2,
+  "genero": "Ação",
+  "legendado": false,
+  "diretor": "Gustavo Scarpim",
+  "__v": 0,
+  "avaliacao": 3,
+  "data": "05/11/2019",
+  "idioma": "PT-BR",
+  "link": "http://localhost:3000/filmes/",
+  "sinopse": "ng Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.ng Lorem Ipsum passages, and more recently with desktop publishing so"
+}]

@@ -37,8 +37,8 @@ export default function Cadastrar() {
   const [avaliacao, setAvaliacao] = useState();
 
   async function Cadastrar() {
-    await Api.post('/filmes', {
-      img, sinopse, genero, data, legendado, titulo,
+    await Api.post('/filmes/', {
+      titulo, img, sinopse, genero, data, legendado,
       idioma, diretor, link, avaliacao,
     }).then(response => {
       setRedirect(true)
