@@ -8,9 +8,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// const mongoURI = 'Sua url do mongo';
-// const mongoURI = 'mongodb+srv://scarpim:123@cluster0-yhxii.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass%20Community&retryWrites=true&ssl=true'
-const mongoURI = 'mongodb+srv://GuScarpim:12345@cluster0-edmvi.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass%20Community&retryWrites=true&ssl=true'
+const mongoURI = 'Sua url do mongo';
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
