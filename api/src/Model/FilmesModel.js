@@ -12,7 +12,7 @@ const Filmes = Schema({
     idioma: { type: String },
     legendado: { type: Boolean },
     diretor: { type: String },
-    link_imdb: { type: String },
+    link: { type: String },
     avaliacao: { type: Number, unique: true },
 });
 

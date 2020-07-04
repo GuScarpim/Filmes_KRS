@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
 `
 export const Card = styled.div`
-  margin-top: 15%;
+  margin-top: 5%;
   width: 80%;
   height: 100%;
   border-radius: 5px;
@@ -21,7 +21,8 @@ export const Card = styled.div`
   text-align: center;
 
   label {
-    font-size: 16px;
+    margin-top: 8px;
+    font-size: 17px;
     font-weight: bold;
   }
   img {
@@ -30,5 +31,39 @@ export const Card = styled.div`
   }
   &:hover {
   box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.5);
+  }
+`
+
+export const PositionImg = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+
+  button {
+    border: none;
+    background: none;
+    width: 70px;
+    margin-left: 30px;
+    margin-right: 10px;
+    outline: none;
+
+    &:focus {
+      img { 
+        opacity: 1; 
+      }
+  }
+  }
+  img {
+    width: 90px;
+    height: 90px;
+    opacity: 0.5; 
+
+    &:hover {
+      opacity: 0.7
+    }
   }
 `

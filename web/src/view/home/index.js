@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 //Components
 import Catalago from '../../components/catalago';
+import Menu from '../../components/menu';
 
 //Services
 import Api from '../../services/';
@@ -12,7 +13,7 @@ import Api from '../../services/';
 export default function Home() {
   const [item, setItem] = useState([]);
 
-  async function BuscarCards() {
+  async function BuscarFilmes() {
     await Api.get('/filmes')
       .then(response => {
         setItem(response.data)
@@ -23,32 +24,45 @@ export default function Home() {
       })
   }
 
+  async function ExcluirFilmes(_id) {
+    await Api.delete(`/filmes/${_id}`)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   useEffect(() => {
-    BuscarCards();
+    BuscarFilmes();
   }, []);
 
   return (
-    <S.Container>
-      {item.map((item, index) => {
-        return (
-          <Catalago
-            key={index}
-            titulo={item.titulo}
-            img={item.img}
-            sinopse={item.sinopse}
-            genero={item.genero}
-            data={item.data}
-            legendado={item.legendado}
-            idioma={item.idioma}
-            diretor={item.diretor}
-            link={item.link}
-            avaliacao={item.avaliacao}
-          />
-        )
-      })
-      }
-      <Link to={'/filmes'} className='btn btn-primary'>
-        Cadastrar</Link>
-    </S.Container>
+    <div>
+      <Menu />
+      <S.Container>
+        {item.map((item, index) => {
+          return (
+            <Catalago
+              key={index}
+              id={item._id}
+              titulo={item.titulo}
+              img={item.img}
+              sinopse={item.sinopse}
+              genero={item.genero}
+              data={item.data}
+              legendado={item.legendado}
+              idioma={item.idioma}
+              diretor={item.diretor}
+              link={item.link}
+              avaliacao={item.avaliacao}
+              onClick={() => ExcluirFilmes(item._id)}
+            />
+          )
+        })
+        }
+      </S.Container >
+    </div>
   )
 }
