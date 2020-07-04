@@ -4,17 +4,20 @@ import * as S from './styles';
 import { Redirect } from 'react-router-dom';
 
 //images
-import Aladin from '../../assets/aladin.jpg'
-import Detona from '../../assets/detona.jpg'
-import Esquadrao from '../../assets/esquadrao.jpg'
-import Sonic from '../../assets/sonic.jpg'
-import Starwars from '../../assets/starwars.jpg'
-import Vingadores from '../../assets/vingadores.jpg'
+import Aladin from '../../assets/aladin.jpg';
+import Detona from '../../assets/detona.jpg';
+import Esquadrao from '../../assets/esquadrao.jpg';
+import Sonic from '../../assets/sonic.jpg';
+import Starwars from '../../assets/starwars.jpg';
+import Vingadores from '../../assets/vingadores.jpg';
+import { TiArrowBack } from 'react-icons/ti';
 
 //Services
 import Api from '../../services/';
 
 //Components
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import Menu from '../../components/menu';
 import NumberFormat from 'react-number-format';
 
@@ -53,7 +56,7 @@ export default function AlterarFilmes({ match }) {
 
   async function Alterar() {
     await Api.put(`/filmes/${match.params.id}`, {
-      img, sinopse, genero, data, legendado,
+      img, titulo, sinopse, genero, data, legendado,
       idioma, diretor, link, avaliacao,
     }).then(() => {
       setRedirect(true);
@@ -64,7 +67,7 @@ export default function AlterarFilmes({ match }) {
   }
 
   useEffect(() => {
-    LoadFilms()
+    LoadFilms();
   }, []);
 
   return (
@@ -73,6 +76,19 @@ export default function AlterarFilmes({ match }) {
       <S.Container>
         {redirect && <Redirect to='/' />}
         <S.Card>
+          <S.PositionLeft>
+            <OverlayTrigger
+              placement={'top'}
+              overlay={
+                <Tooltip id={`tooltip-top`}>
+                  Voltar
+              </Tooltip>
+              }>
+              <Link to={'/'} className='return_icon'>
+                <TiArrowBack className='icon_back' />
+              </Link>
+            </OverlayTrigger>
+          </S.PositionLeft>
           {item.map((item, index) => {
             return (
               <div key={index}>
@@ -82,6 +98,7 @@ export default function AlterarFilmes({ match }) {
                   <div className='form-group col-12'>
                     <label>Título</label>
                     <input id='titulo' type='text'
+                      maxLength={30}
                       className='form-control'
                       placeholder='Insira um titulo'
                       defaultValue={item.titulo} onChange={e => setTitulo(e.target.value)}
@@ -109,6 +126,7 @@ export default function AlterarFilmes({ match }) {
 
                     <label>Idioma</label>
                     <input id='idioma' type='text'
+                      maxLength={20}
                       className='form-control'
                       placeholder='Insira um idioma'
                       defaultValue={item.idioma} onChange={e => setIdioma(e.target.value)}
@@ -118,6 +136,7 @@ export default function AlterarFilmes({ match }) {
                   <div className='form-group col'>
                     <label>Diretor</label>
                     <input id='diretor' type='text'
+                      maxLength={30}
                       className='form-control'
                       placeholder='Diretor'
                       defaultValue={item.diretor} onChange={e => setDiretor(e.target.value)}
@@ -125,13 +144,15 @@ export default function AlterarFilmes({ match }) {
 
                     <label>Link</label>
                     <input id='link' type='text'
+                      maxLength={150}
                       className='form-control'
                       placeholder='Insira um link'
                       defaultValue={item.link} onChange={e => setLink(e.target.value)}
                       required />
 
                     <label>Avaliação</label>
-                    <input id='avaliacao' type='number'
+                    <NumberFormat id='avaliacao'
+                      displayType={'number'} format="#"
                       className='form-control'
                       placeholder='Insira uma avaliacao'
                       defaultValue={item.avaliacao} onChange={e => setAvaliacao(e.target.value)}
@@ -149,7 +170,7 @@ export default function AlterarFilmes({ match }) {
                     <input className="form-check-input mt-3 ml-1" type="radio"
                       id="legendado" defaultValue={item.legendado}
                       checked={legendado ? true : false}
-                      onChange={() => setLegendado(!legendado)} />
+                      onChange={() => setLegendado(true)} />
                     <label className='ml-4'>Legendado</label>
 
                     <input className="form-check-input mt-3 ml-2" type="radio"
@@ -162,31 +183,34 @@ export default function AlterarFilmes({ match }) {
                 <S.PositionImg>
                   <div className='form-group'>
                     <button onClick={() => setImg(0)}>
-                      <img src={Aladin} />
+                      <img src={Aladin} alt='Imagem Aladin' />
                     </button>
 
                     <button onClick={() => setImg(1)}>
-                      <img src={Detona} />
+                      <img src={Detona} alt='Imagem Detona' />
                     </button>
 
                     <button onClick={() => setImg(2)}>
-                      <img src={Esquadrao} />
+                      <img src={Esquadrao} alt='Imagem Esquadrao' />
                     </button>
 
                     <button onClick={() => setImg(3)}>
-                      <img src={Sonic} />
+                      <img src={Sonic} alt='Imagem Sonic' />
                     </button>
 
                     <button onClick={() => setImg(4)}>
-                      <img src={Starwars} />
+                      <img src={Starwars} alt='Imagem Starwars' />
                     </button>
 
                     <button onClick={() => setImg(5)}>
-                      <img src={Vingadores} />
+                      <img src={Vingadores} alt='Imagem Vingadores' />
                     </button>
                   </div>
                 </S.PositionImg>
-                <button className='btn btn-primary' onClick={() => Alterar()}>Enviar</button>
+                <button className='btn_padrao'
+                  onClick={() => Alterar()}>
+                  Enviar
+                </button>
               </div>
             )
           })

@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
 
 //Routes
 import Routes from './routes';
-
-//components
-import Menu from './components/menu';
 
 ReactDOM.render(
   <React.StrictMode>

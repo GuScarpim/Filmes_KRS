@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 
+//Imagens
 import Aladin from '../../assets/aladin.jpg';
 import Detona from '../../assets/detona.jpg';
 import Esquadrao from '../../assets/esquadrao.jpg';
@@ -9,8 +10,13 @@ import StarWars from '../../assets/starwars.jpg';
 import Vingadores from '../../assets/vingadores.jpg';
 
 //Icons
-import { FaTrashAlt, FaPen } from 'react-icons/fa'
+import { FaTrashAlt, FaPen } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+
+//components
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import Rating from "@material-ui/lab/Rating";
+import Box from "@material-ui/core/Box";
 
 export default function Catalago({
   titulo, sinopse, genero, data, idioma, legendado, diretor,
@@ -19,42 +25,64 @@ export default function Catalago({
   return (
     <S.ContainerCard>
       <S.Card>
-        <S.PositionBtn>
-          <button onClick={onClick} className='btn btn-danger'>
-            <FaTrashAlt />
-          </button>
-          <Link to={`/filmes/${id}`} className='btn btn-warning' >
-            <FaPen />
-          </Link>
-        </S.PositionBtn>
+        <S.PositionLeft>
+          <OverlayTrigger
+            placement={'top'}
+            overlay={
+              <Tooltip id={`tooltip-top`}>
+                Excluir filme
+              </Tooltip>
+            }>
+            <button onClick={onClick} className='btn btn-danger'>
+              <FaTrashAlt className='action_icon' color='black' />
+            </button>
+          </OverlayTrigger>
+          <OverlayTrigger
+            placement={'top'}
+            overlay={
+              <Tooltip id={`tooltip`}>
+                Editar filme
+              </Tooltip>
+            }>
+            <Link to={`/filmes/${id}`} className='btn btn-warning' >
+              <FaPen className='action_icon' />
+            </Link>
+          </OverlayTrigger>
+        </S.PositionLeft>
 
         <h3>{titulo}</h3>
         {
           img === 0 ?
-            <img src={Aladin} /> :
-            img === 1 ?
-              <img src={Detona} /> :
-              img === 2 ?
-                <img src={Esquadrao} /> :
-                img === 3 ?
-                  <img src={Sonic} /> :
-                  img === 4 ?
-                    <img src={StarWars} /> :
-                    img === 5 ?
-                      <img src={Vingadores} />
-                      : ''
+          <img src={Aladin} alt='Imagem Aladin' /> :
+          img === 1 ?
+          <img src={Detona} alt='Imagem Detona' /> :
+          img === 2 ?
+          <img src={Esquadrao} alt='Imagem Esquadrao' /> :
+          img === 3 ?
+          <img src={Sonic} alt='Imagem Sonic' /> :
+          img === 4 ?
+          <img src={StarWars} alt='Imagem StarWars' /> :
+          img === 5 ?
+          <img src={Vingadores} alt='Imagem Vingadores' />
+          : ''
         }
         <p>{sinopse}</p>
-        <p>{genero}</p>
-        <p>{data}</p>
-        <p>{idioma}</p>
+        <p><b>Gênero: </b>{genero}</p>
+        <p><b>Data de lançamento:</b> {data}</p>
+        <p><b>Idioma:</b> {idioma}</p>
         {legendado ?
-          <p>Legendado</p> :
-          <p>Sem legenda</p>
+          <p><b>Legendado</b></p> :
+          <p><b>Sem legenda</b></p>
         }
-        <p>{diretor}</p>
-        <a href={link}>{link}</a>
-        <p>{avaliacao}</p>
+        <p><b>Diretor:</b> {diretor}</p>
+        <p><b>Link do filme: </b>
+          <a href={link}>{link}</a>
+        </p>
+        <S.PositionLeft>
+          <Box component="fieldset" mb={3} borderColor="transparent">
+            <Rating name="disabled" value={avaliacao} disabled />
+          </Box>
+        </S.PositionLeft>
       </S.Card >
     </S.ContainerCard>
   )

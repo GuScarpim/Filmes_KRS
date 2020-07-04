@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-wrap: wrap;
 `
 export const Card = styled.div`
-  margin-top: 5%;
+  margin-top: 2%;
   width: 80%;
   height: 100%;
   border-radius: 5px;
@@ -19,6 +19,23 @@ export const Card = styled.div`
   padding-left: 30px;
   padding-right: 30px;
   text-align: center;
+  margin-bottom: 50px;
+
+  .return_icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-color: #426CB3;
+    color: #000;
+  }
+
+  .icon_back {
+    margin-top: 3px;
+    width: 30px;
+    height: 30px;
+  }
 
   label {
     margin-top: 8px;
@@ -31,6 +48,38 @@ export const Card = styled.div`
   }
   &:hover {
   box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  .btn_padrao {
+    border-radius: 20px;
+    width: 100px;
+    height: 35px;
+    border: none;
+    background-color: #426CB3;
+    color: #FFF;
+
+    &:hover {
+      background-color: #2959ab;
+    }
+  }
+
+  @media only screen and (max-width: 670px) { 
+    padding: 0px;
+   form {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  @media only screen and (max-width: 450px) { 
+    .return_icon {
+      width: 35px;
+      height: 35px;
+    }
+    .icon_back {
+      margin-top: 3px;
+      width: 20px;
+      height: 20px;
+    }
   }
 `
 
@@ -65,5 +114,13 @@ export const PositionImg = styled.div`
     &:hover {
       opacity: 0.7
     }
+  }
+`
+
+export const PositionLeft = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  a {
+    margin-right: 10px;
   }
 `

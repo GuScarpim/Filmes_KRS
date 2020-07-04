@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 //Components
 import Home from '../view/home';
-import Filmes from '../view/filmes';
+import Filmes from '../view/filmes/cadastrar';
 import AlterarFilmes from '../view/filmes/alterar';
 
 export default function Routes() {

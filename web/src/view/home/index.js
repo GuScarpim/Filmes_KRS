@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 
-import { Link } from 'react-router-dom';
-
 //Components
 import Catalago from '../../components/catalago';
 import Menu from '../../components/menu';
@@ -12,6 +10,7 @@ import Api from '../../services/';
 
 export default function Home() {
   const [item, setItem] = useState([]);
+
 
   async function BuscarFilmes() {
     await Api.get('/filmes')
@@ -28,6 +27,7 @@ export default function Home() {
     await Api.delete(`/filmes/${_id}`)
       .then(response => {
         console.log(response.data);
+        window.location.reload();
       })
       .catch(error => {
         console.log(error);
